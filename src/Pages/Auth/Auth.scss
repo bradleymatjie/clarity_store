@@ -1,0 +1,155 @@
+.login-page {
+  height: 83vh;
+  display: flex;
+  justify-content: space-between;
+
+  & .signin,
+  & .signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  & .signin_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 250px;
+
+    & input {
+      height: 30px;
+      background: transparent;
+      border-radius: 20px;
+      width: 100%;
+      padding-left: 10px;
+    }
+
+    & button {
+      height: 40px;
+      border: 1px solid white;
+      border-radius: 20px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .signup {
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #ff3e9d, #0e1f40);
+    color: #fff;
+    
+    & h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+  
+    & button {
+      width: 200px;
+      height: 40px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: .5s;
+  
+      &:hover {
+        background-color: yellow;
+        color: #fff;
+      }
+    }
+  }
+}
+
+::placeholder {
+  padding-left: 10px; 
+}
+
+.register-page {
+  height: 83vh;
+  display: flex;
+  justify-content: space-between;
+
+  & .signin,
+  & .sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  & .signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & h2 {
+      font-size: 40px;
+    }
+
+    & button {
+      width: 200px;
+      height: 40px;
+      border-radius: 20px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: yellow;
+      }
+    }
+  }
+
+  & .signup_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+
+    & input {
+      height: 30px;
+      background: transparent;
+      border-radius: 20px;
+      width: 100%;
+      padding-left: 10px;
+    }
+
+    & button {
+      height: 40px;
+      border: 1px solid white;
+      border-radius: 20px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .sign-up {
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #ff3e9d, #0e1f40);
+    color: #fff;
+    
+    & h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+  
+    & button {
+      width: 200px;
+      height: 40px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: .5s;
+  
+      &:hover {
+        background-color: yellow;
+        color: #fff;
+      }
+    }
+  }
+}
