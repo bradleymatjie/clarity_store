@@ -1,9 +1,43 @@
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from '../../firebase/Config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from 'react';
 
-export const Header = () => {
+export const Header = ({ sethasUser, hasUser }) => {
+  const [showUser, setShowUser] = useState("");
+  const navigate = useNavigate();
+
+  const logOutUser = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      toast.success('signed out');
+      navigate("/login");
+    }).catch((error) => {
+      // An error happened.
+      toast.error(error);
+    });
+  }
+
+  // see the currently signed in user
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // const uid = user.uid;
+        setShowUser(user.displayName);
+        sethasUser(true);
+      } else {
+        setShowUser("");
+      }
+    })
+  }, [hasUser, sethasUser])
+
   return (
-    <header className='header'>
+    <>
+      <ToastContainer />
+      <header className='header'>
       <div>
         <div className='logo'>
           <NavLink to='/'>
@@ -11,13 +45,20 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className='cart'>
-          <p>Cart: 0</p>
+          <p>0</p>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKONRhX7SjSxc7Nrc6ZKPfMsHDCwZsPo7zw&usqp=CAU"
+            alt="cart icon" 
+            width={45}
+            height={40}
+          />
         </div>
       </div>
       
       <nav>
         <ul>
-          <li>hi bradley</li>
+          {hasUser && <li>{showUser}</li>}
+          
           <NavLink to='/'>
             <li>Home</li>
           </NavLink>
@@ -30,15 +71,15 @@ export const Header = () => {
             <li>my orders</li>
           </NavLink>
           
-          <NavLink to='sign up'>
-            <li>SIGN UP</li>
-          </NavLink>
 
-          <NavLink to='login'>
-            <li>LOG IN</li>
+          <li onClick={logOutUser}>Log out</li>
+          
+          <NavLink to='/login'>
+            <li>LOG IN/SIGN UP</li>
           </NavLink>
         </ul>
       </nav>
-    </header>
+      </header>
+    </>
   );
 }

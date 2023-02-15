@@ -1,21 +1,77 @@
 import './Auth.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../firebase/Config';
 
 export const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [conPassword, setConPassword] = useState("");
+
+  const registerUser = (e) => {
+    e.preventDefault();
+    if (password !== conPassword) {
+      toast.error("password do not match");
+    }
+
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    // eslint-disable-next-line
+    const user = userCredential.user;
+    toast.success("account succesfully created");
+  })
+  .catch((error) => {
+    // eslint-disable-next-line
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    toast.error(errorMessage);
+    // ..
+  });
+    
+
+  }
+
   return (
-    <div>
-      <section className="register-page">
+    <>
+    <ToastContainer />
+    <section className="register-page">
       <div className="sign-up">
         <h2>Sign up</h2>
         <form
           className='signup_form'
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={registerUser}
         >
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
-          <input type="email" placeholder="email" />
+          <input
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(state) => {
+              setEmail(state.target.value);
+            }}
+            required
+          />
+          <input 
+            type="password" 
+            placeholder="password"
+            value={password}
+            onChange={(state) => {
+              setPassword(state.target.value);
+            }}
+            required
+          />
+          <input 
+            type="password" 
+            placeholder="confirm password" 
+            value={conPassword}
+            onChange={(state) => {
+              setConPassword(state.target.value);
+            }}
+            required
+          />
           <p>-------------------- or --------------------</p>
           <button>Sign up with Google</button>
           <button type="submit" className='submit-form'>Sign Up</button>
@@ -30,6 +86,6 @@ export const Register = () => {
         </Link>
       </div>
     </section>
-    </div>
+    </>
   );
 }

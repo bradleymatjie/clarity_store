@@ -26,6 +26,7 @@
       border-radius: 20px;
       width: 100%;
       padding-left: 10px;
+      color: black; 
     }
 
     & button {
@@ -63,6 +64,10 @@
   }
 }
 
+input {
+  color: white;
+}
+
 ::placeholder {
   padding-left: 10px; 
 }
@@ -94,8 +99,11 @@
     & button {
       width: 200px;
       height: 40px;
+      border: none;
       border-radius: 20px;
+      box-shadow: 1px -1px 5px 1px #000;
       cursor: pointer;
+      transition: .9s;
 
       &:hover {
         background-color: yellow;
@@ -151,5 +159,44 @@
         color: #fff;
       }
     }
+  }
+}
+
+.reset-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom right, #ff3e9d, #0e1f40);
+  height: 83vh;
+  color: white;
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  & input {
+    width: 300px;
+    height: 40px;
+    background: transparent;
+    box-shadow: 1px 1px 5px 1px #000;
+  }
+
+  & button {
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    margin-top: 15px;
+    border: none;
+    cursor:pointer;
+  }
+
+  & .bcToLogin {
+    color: orange;
+    text-decoration: underline;
   }
 }
