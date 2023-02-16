@@ -26,7 +26,7 @@ export const Header = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
       //   const uid = user.uid;
-        setShowUser(user.displayName);
+        setShowUser(user.email);
       } else {
         setShowUser("");
       }
