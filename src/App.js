@@ -8,14 +8,14 @@ import { Footer } from './Components/Footer/Footer';
 import { Login } from './Pages/Auth/Login';
 import { Register } from './Pages/Auth/Register';
 import { Reset } from './Pages/Auth/Reset';
-import { useState } from 'react';
 
 function App() {
-  const [hasUser, setHasUser] = useState(false);
+
+ 
   return (
     <>
       <BrowserRouter>
-        <Header setHasUser={setHasUser} hasUser={hasUser}/>
+        <Header />
         <Routes>
           <Route path='/' element={ <Home /> }/>
           <Route path='/contact' element={ <Contact /> } />

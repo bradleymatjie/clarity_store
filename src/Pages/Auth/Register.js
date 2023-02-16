@@ -1,16 +1,18 @@
 import './Auth.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase/Config';
 
-export const Register = () => {
+export const Register = ({ setShowUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
 
+  const navigate = useNavigate();
+  
   const registerUser = (e) => {
     e.preventDefault();
     if (password !== conPassword) {
@@ -23,6 +25,7 @@ export const Register = () => {
     // eslint-disable-next-line
     const user = userCredential.user;
     toast.success("account succesfully created");
+    navigate("/");
   })
   .catch((error) => {
     // eslint-disable-next-line
@@ -31,8 +34,6 @@ export const Register = () => {
     toast.error(errorMessage);
     // ..
   });
-    
-
   }
 
   return (

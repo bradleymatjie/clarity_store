@@ -77,6 +77,17 @@
       }
     }
   }
+
+  & .showUser {
+    color: orange;
+    border-bottom: 1px solid dotted orange;
+
+    &:hover {
+      border: none;
+      color: orange;
+      padding: 0;
+    }
+  }
 }
 
 a {

@@ -4,9 +4,9 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../firebase/Config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export const Header = ({ sethasUser, hasUser }) => {
+export const Header = () => {
   const [showUser, setShowUser] = useState("");
   const navigate = useNavigate();
 
@@ -25,14 +25,13 @@ export const Header = ({ sethasUser, hasUser }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // const uid = user.uid;
+      //   const uid = user.uid;
         setShowUser(user.displayName);
-        sethasUser(true);
       } else {
         setShowUser("");
       }
     })
-  }, [hasUser, sethasUser])
+  }, [setShowUser])
 
   return (
     <>
@@ -57,8 +56,8 @@ export const Header = ({ sethasUser, hasUser }) => {
       
       <nav>
         <ul>
-          {hasUser && <li>{showUser}</li>}
-          
+          <li className='showUser'>{showUser}</li>
+
           <NavLink to='/'>
             <li>Home</li>
           </NavLink>
@@ -74,9 +73,12 @@ export const Header = ({ sethasUser, hasUser }) => {
 
           <li onClick={logOutUser}>Log out</li>
           
-          <NavLink to='/login'>
-            <li>LOG IN/SIGN UP</li>
-          </NavLink>
+         {!showUser ?
+            (
+            <NavLink to='/login'>
+              <li>LOG IN/SIGN UP</li>
+            </NavLink>) : ""
+          }
         </ul>
       </nav>
       </header>
