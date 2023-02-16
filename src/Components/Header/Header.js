@@ -65,12 +65,9 @@ export const Header = () => {
           <NavLink to='/contact'>
             <li>Contact</li>
           </NavLink>
-
-          <NavLink to='/myorders'>
-            <li>my orders</li>
-          </NavLink>
           
-
+          <li>my orders</li>
+          
           <li onClick={logOutUser}>Log out</li>
           
          {!showUser ?
