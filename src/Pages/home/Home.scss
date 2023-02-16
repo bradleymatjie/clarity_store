@@ -1,0 +1,119 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: fit-content;
+  padding-bottom: 60px;
+
+  &-item {
+    border: 1px solid black;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    // & div {
+    //   display: flex;
+    //   width: 100%;
+    //   justify-content: space-evenly;
+    // }
+  }
+
+  &-items-container {
+    width: 98%;
+    height: 700px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  & .filter {
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+  }
+
+  & .filter :first-child {
+    border-bottom: 5px solid yellow;
+  }
+}
+
+.product {
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  max-width: 200px;
+  width: 100%;
+  padding: 32px 16px 16px;
+}
+
+.product__image {
+  width: 160px;
+  height: 134px;
+  display: block;
+  margin: 0 auto 40px;
+}
+
+.product__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 4px;
+}
+
+.product__code {
+  font-size: 10px;
+  line-height: 14px;
+  margin-bottom: 16px;
+}
+
+.product__feedback {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.product__reviews {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.product__price {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.product__price_title {
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.product__price_amount {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.buy {
+  background-color: greenyellow;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: white;
+  padding: 11px 10px;
+  border: 1px solid transparent;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
